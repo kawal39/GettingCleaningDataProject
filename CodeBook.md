@@ -2,10 +2,10 @@
 
 The run_analysis.R script performs the data preparation and then followed by the 5 steps required as described in the course project’s definition.
 
-## Downloaded the dataset
+## 1. Downloaded the dataset
 - Dataset downloaded and extracted under the folder called UCI HAR Dataset
 
-## Assigned each data to variables
+## 2. Assigned each data to variables
 - features <- features.txt : 561 rows, 2 columns  
 *The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.*
 - activities <- activity_labels.txt : 6 rows, 2 columns  
@@ -23,19 +23,19 @@ The run_analysis.R script performs the data preparation and then followed by the
 - y_train <- test/y_train.txt : 7352 rows, 1 columns  
 *contains train data of activities’code labels*
 
-## Merged the training and the test sets to create one data set
+## 3. Merged the training and the test sets to create one data set
 - X (10299 rows, 561 columns) is created by merging x_train and x_test using rbind() function
 - y (10299 rows, 1 column) is created by merging y_train and y_test using rbind() function
 - subject (10299 rows, 1 column) is created by merging subject_train and subject_test using rbind() function
 - MergedData (10299 rows, 563 column) is created by merging Subject, Y and X using cbind() function
 
-## Extracted only the measurements on the mean and standard deviation for each measurement
+## 4. Extracted only the measurements on the mean and standard deviation for each measurement
 - CleanData (10299 rows, 88 columns) is created by subsetting MergedData, selecting only columns: subject, code and the measurements on the mean and standard deviation (std) for each measurement
 
-## Used descriptive activity names to name the activities in the data set
+## 5. Used descriptive activity names to name the activities in the data set
 - Entire numbers in code column of the CleanData replaced with corresponding activity taken from second column of the activities variable
 
-## Appropriately labelled the data set with descriptive variable names
+## 6. Appropriately labelled the data set with descriptive variable names
 - code column in CleanData renamed into activities
 - All start with character f in column’s name replaced by Frequency
 - All start with character t in column’s name replaced by Time
@@ -44,6 +44,6 @@ The run_analysis.R script performs the data preparation and then followed by the
 - All BodyBody in column’s name replaced by Body
 - All Mag in column’s name replaced by Magnitude
 
-## Created a second, independent tidy data set with the average of each variable for each activity and each subject
-TidyData (180 rows, 88 columns) is created by sumarizing CleanData taking the means of each variable for each activity and each subject, after groupped by subject and activity.
-Exports TidyData into TidyData.txt file.
+## 7. Created a second, independent tidy data set with the average of each variable for each activity and each subject
+- TidyData (180 rows, 88 columns) is created by sumarizing CleanData taking the means of each variable for each activity and each subject, after groupped by subject and activity.
+- Exports TidyData into TidyData.txt file.
